@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from schema-creator.org/movie.php by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 28 Jan 2016 07:22:50 GMT -->
+<head>
+        
+        <meta charset="utf-8">
+        <title>Schema Creator for 'Movie' schema.org microdata</title>
+        <meta name="description" content="Easily create schema microdata for a Movie using the Schema Creator" />
+        <meta property="og:title" content="Schema Creator for 'Movie' schema.org microdata"/>
+        <meta property="og:site_name" content="Schema Creator"/>
+        <meta property="og:type" content="article"/>
+        <meta property="fb:app_id" content="200151043368082">
+ 		<meta property="og:title" content="Schema Creator" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="index.html" />
+		<meta property="og:image" content="" />
+       <link rel="stylesheet" href="css/screen8f14.css?7" />
+        <script src="js/modernizr.js"></script>
+        <script src="../connect.facebook.net/en_US/all.js#xfbml=1"></script> 
+        <script type="text/javascript" src="../apis.google.com/js/plusone.js"></script>
+        <script src="js/jquery-1.5.1.min.js"></script>
+        <script src="js/jquery-ui-1.8.14.custom.min.js"></script>
+        <script src="js/jquery-ui-timepicker-addon.js"></script>
+        <script src="js/jquery.dateFormat-1.0.js"></script>
+        <script type='text/javascript' src='js/jquery.autogrow-textarea.js'></script>
+        <link rel="stylesheet" media="all" type="text/css" href="css/smoothness/jquery-ui-1.8.14.custom.css" />
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-88442-61', 'auto');
+          ga('require', 'displayfeatures');
+          ga('send', 'pageview');
+
+        </script>
+    	<script>
+    		function updateOutput()
+    		{
+				var type = 'Movie';
+    			var name = $('#name').val();
+    			var url = $('#url').val();
+    			var description = $('#description').val();
+    			var director = $('#director').val();
+    			var actor1 = $('#actor1').val();
+    			var actor2 = $('#actor2').val();
+    			var actor3 = $('#actor3').val();
+ 
+   				var html = '<div itemscope itemtype="http://schema.org/'+type+'">\n';
+    			if (url) html = html + '<a itemprop="url" href="'+url+'">';
+    			if (name) html = html + '<div itemprop="name"><strong>'+name+'</strong></div>\n';
+    			if (url && !name) html = html + "Link";
+    			if (url) html = html + "</a>\n";
+    			if (description) html = html + '<div itemprop="description">'+description+'</div>\n';
+    			if (director) {
+					html = html + '<div itemprop="director" itemscope itemtype="http://schema.org/Person">\n';
+					html = html + 'Directed by: <span itemprop="name">'+director+'</span>';
+	    			html = html + '</div>\n';
+				}
+				if (actor1 || actor2 || actor3)
+				{
+					html = html + '<div>Starring: ';
+					if (actor1) {
+						html = html + '<div itemprop="actors" itemscope itemtype="http://schema.org/Person">\n';
+						html = html + '<span itemprop="name">'+actor1+'</span>';
+		    			html = html + '</div>\n';
+					}
+					if (actor2) {
+						html = html + '<div itemprop="actors" itemscope itemtype="http://schema.org/Person">\n';
+						html = html + '<span itemprop="name">'+actor2+'</span>';
+		    			html = html + '</div>\n';
+					}
+					if (actor3) {
+						html = html + '<div itemprop="actors" itemscope itemtype="http://schema.org/Person">\n';
+						html = html + '<span itemprop="name">'+actor3+'</span>';
+		    			html = html + '</div>\n';
+					}
+					html = html + '</div>\n'; 			
+				}
+ 
+    			html = html + '</div>\n';
+			
+    			$('#codeoutput').html(html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+				$('#codeoutput').change();
+    			$('#htmloutput').html(html);
+    		}
+			
+    	   function initpage() {
+	          	$('#codeoutput').autogrow();
+				$('#codeoutput').click(function() {
+				  $('#codeoutput').select();
+				});
+				$('input').keyup(window.updateOutput);
+    			$('input').click(window.updateOutput);
+    			$('select').change(window.updateOutput);
+    			$('input.datetimepicker').datetimepicker({ onClose: updateOutput, stepMinute: 10, hour: 12, dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm' });
+    			$('input.datepicker').datepicker({ onClose: updateOutput, dateFormat: 'yy-mm-dd'});
+
+    	      	updateOutput();
+    	    }
+
+    		$(window.initpage);
+	
+    	</script>
+     </head>
+    <body id="movie">
+        <header>
+	<ul class="social clearfix">
+		<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="RavenTools"></a><script type="text/javascript" src="../platform.twitter.com/widgets.js"></script></li>
+		<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false"></div></li>
+		<li class="gp"><g:plusone></g:plusone></li>
+		<li class="su"><script src="http://www.stumbleupon.com/hostedbadge.php?s=6"></script></li>
+	</ul>
+    <h1><a href="index.html">Semantic description Tool</a></h1>
+    <p>The easiest way to create rdf</p>
+</header>		<nav>
+    <h2>Schemas</h2>
+    <ul>
+        <li class="navperson"><a href="person.html">Person</a></li>
+        <li class="navproduct"><a href="product.html">Product</a></li>
+        <li class="navevent"><a href="event.html">Event</a></li>
+        <li class="navorg"><a href="organization.html">Organization</a></li>
+        <li class="navmovie"><a href="movie.html">Movie</a></li>
+        <li class="navbook"><a href="book.html">Book</a></li>
+        <li class="navreview"><a href="review.html">Review</a></li>
+    </ul>
+
+   
+</nav>
+        
+        <section>
+    
+			<article>
+
+				<h3>About the Person Movie </h3>
+
+				<p>This is used to mark up information related to movies, allowing you to highlight the director and primary actors.</p>
+			
+				
+
+			</article>	
+	
+	
+    	    <form action="#">
+				<h3>Info about a Movie</h3>
+        	<fieldset>
+        		
+        		<p><label>Name</label><input type="text" name="name" id="name"></p>
+        		<p><label>URL</label><input type="text" name="url" id="url"></p>
+        		<p><label>Description</label><textarea name="description" id="description"></textarea></p>
+        		<p><label>Director</label><input type="text" name="director" id="director"></p>
+        		<p><label>Actor</label><input type="text" name="actor1" id="actor1"></p>
+        		<p><label>Actor</label><input type="text" name="actor2" id="actor2"></p>
+        		<p><label>Actor</label><input type="text" name="actor3" id="actor3"></p>
+         	</fieldset>
+        	</form>
+        	<div class="output">
+                    <h4>Preview</h4>
+                    <div id="htmloutput">
+                    </div>
+                    <h4>Code</h4>
+                    <textarea id="codeoutput"></textarea>
+                    <p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="raventools"></a><script type="text/javascript" src="../platform.twitter.com/widgets.js"></script> <!--<script src="http://www.stumbleupon.com/hostedbadge.php?s=1"></script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--><g:plusone size="medium"></g:plusone> <fb:like href="#" send="false" show_faces="false" font=""></fb:like></p>            </div>
+			
+			sss
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "../connect.facebook.net/en_US/all.js#xfbml=1&appId=294198537281040";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Google Code for Remarketing tag -->
+      <!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+      <script type="text/javascript">
+      /* <![CDATA[ */
+      var google_conversion_id = 983050619;
+      var google_conversion_label = "V0fGCIXs6gQQ-9Lg1AM";
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+      </script>
+      <script type="text/javascript" src="../www.googleadservices.com/pagead/f.txt">
+      </script>
+      <noscript>
+      <div style="display:inline;">
+      <img height="1" width="1" style="border-style:none;" alt="" src="../googleads.g.doubleclick.net/pagead/viewthroughconversion/983050619/index2ca3.html?value=1.00&amp;currency_code=USD&amp;label=V0fGCIXs6gQQ-9Lg1AM&amp;guid=ON&amp;script=0"/>
+      </div>
+      </noscript>
+
+      <!-- Facebook Pixel Code -->
+      <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','../connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1138547392829617');
+      fbq('track', "PageView");</script>
+      <noscript><img height="1" width="1" style="display:none"
+      src="../www.facebook.com/tr707e.gif?id=1138547392829617&amp;ev=PageView&amp;noscript=1"
+      /></noscript>
+      <!-- End Facebook Pixel Code -->
+      <script type='text/javascript' src='../assets.glossary.cards/js/popup.js'></script>
+</body>
+
+<!-- Mirrored from schema-creator.org/movie.php by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 28 Jan 2016 07:22:51 GMT -->
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from schema-creator.org/person.php by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 28 Jan 2016 07:23:13 GMT -->
+<head>
+        
+        <meta charset="utf-8">
+        <title>Schema Creator for 'Person' schema.org microdata</title>
+        <meta name="description" content="Easily create schema microdata for a Person using the Schema Creator" />
+        <meta property="og:title" content="Schema Creator for 'Person' schema.org microdata"/>
+        <meta property="og:site_name" content="Schema Creator"/>
+        <meta property="og:type" content="article"/>
+        <meta property="fb:app_id" content="200151043368082">
+ 		<meta property="og:title" content="Schema Creator" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="index.html" />
+		<meta property="og:image" content="" />
+       <link rel="stylesheet" href="css/screen8f14.css?7" />
+        <script src="js/modernizr.js"></script>
+        <script src="../connect.facebook.net/en_US/all.js#xfbml=1"></script> 
+        <script type="text/javascript" src="../apis.google.com/js/plusone.js"></script>
+        <script src="js/jquery-1.5.1.min.js"></script>
+        <script src="js/jquery-ui-1.8.14.custom.min.js"></script>
+        <script src="js/jquery-ui-timepicker-addon.js"></script>
+        <script src="js/jquery.dateFormat-1.0.js"></script>
+        <script type='text/javascript' src='js/jquery.autogrow-textarea.js'></script>
+        <link rel="stylesheet" media="all" type="text/css" href="css/smoothness/jquery-ui-1.8.14.custom.css" />
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-88442-61', 'auto');
+          ga('require', 'displayfeatures');
+          ga('send', 'pageview');
+
+        </script>        
+    	<script>
+    		function updateOutput()
+    		{
+				var type = 'Person';
+    			var name = $('#name').val();
+    			var url = $('#url').val();
+    			var description = $('#description').val();
+    			var telephone = $('#telephone').val();
+    			var email = $('#email').val();
+    			var jobtitle = $('#jobtitle').val();
+    			var birthdate = $('#birthdate').val();
+    			var organization = $('#organization').val();
+ 
+	   			var address = $('#address').val();
+	    		var pobox = $('#pobox').val();
+	    		var city = $('#city').val();
+	    		var state = $('#state').val();
+	    		var zip = $('#zip').val();
+	    		var country = $('#country').val();
+
+   				var html = '<div itemscope itemtype="http://schema.org/'+type+'">\n';
+    			if (url) html = html + '<a itemprop="url" href="'+url+'">';
+    			if (name) html = html + '<div itemprop="name"><strong>'+name+'</strong></div>\n';
+    			if (url && !name) html = html + "Link";
+    			if (url) html = html + "</a>\n";
+				if (organization) html = html + '<div itemscope itemtype="http://schema.org/Organization"><span itemprop="name">'+organization+'</span></div>';
+				
+    			if (jobtitle) html = html + '<div itemprop="jobtitle">'+jobtitle+'</div>\n';
+    			if (description) html = html + '<div itemprop="description">'+description+'</div>\n';
+
+				if (address || pobox || city || state || zip || country)
+				{
+					html = html + '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">\n';
+					if (address) html = html + '<div itemprop="streetAddress">'+address+'</div>\n';
+					if (pobox) html = html + '<div>P.O. Box: <span itemprop="postOfficeBoxNumber">'+pobox+'</div>\n';
+					if (city || state) {
+						html = html + "<div>";
+						if (city) html = html + '<span itemprop="addressLocality">'+city+'</span>';
+						if (city && state) html = html + ", ";
+						if (state) html = html + '<span itemprop="addressRegion">'+state+'</span>';
+						html = html + "</div>";
+					}
+					if (zip) html = html + '<div itemprop="postalCode">'+zip+'</div>\n';
+					if (country) html = html + '<div itemprop="addressCountry">'+country+'</div>\n';
+	    			html = html + '</div>\n';
+	     			
+				}
+
+    			if (email) html = html + '<div itemprop="email">'+email+'</div>\n';
+    			if (telephone) html = html + '<div itemprop="telephone">'+telephone+'</div>\n';
+    			if (birthdate) html = html + '<div><meta itemprop="birthDate" content="'+$.format.date(birthdate+" 00:00:00.000", "yyyy-MM-dd")+'">DOB: '+ $.format.date(birthdate+" 00:00:00.000", "MM/dd/yyyy") +'</div>\n';
+
+    			html = html + '</div>\n';
+			
+    			$('#codeoutput').html(html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+				$('#codeoutput').change();
+    			$('#htmloutput').html(html);
+    		}
+			
+    	   function initpage() {
+	          	$('#codeoutput').autogrow();
+				$('#codeoutput').click(function() {
+				  $('#codeoutput').select();
+				});
+				$('input').keyup(window.updateOutput);
+    			$('input').click(window.updateOutput);
+    			$('select').change(window.updateOutput);
+    			$('input.datetimepicker').datetimepicker({ onClose: updateOutput, stepMinute: 10, hour: 12, dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm' });
+    			$('input.datepicker').datepicker({ onClose: updateOutput, dateFormat: 'yy-mm-dd'});
+
+    	      	updateOutput();
+    	    }
+
+    		$(window.initpage);
+	
+    	</script>
+     </head>
+    <body id="person">
+        <header>
+	<ul class="social clearfix">
+		<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="RavenTools"></a><script type="text/javascript" src="../platform.twitter.com/widgets.js"></script></li>
+		<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false"></div></li>
+		<li class="gp"><g:plusone></g:plusone></li>
+		<li class="su"><script src="http://www.stumbleupon.com/hostedbadge.php?s=6"></script></li>
+	</ul>
+    <h1><a href="index.html">Semantic description tool</a></h1>
+    <p>The easiest way to create rdf </p>
+</header>		<nav>
+    <h2>Schemas</h2>
+    <ul>
+        <li class="navperson"><a href="person.html">Person</a></li>
+        <li class="navproduct"><a href="product.html">Product</a></li>
+        <li class="navevent"><a href="event.html">Event</a></li>
+        <li class="navorg"><a href="organization.html">Organization</a></li>
+        <li class="navmovie"><a href="movie.html">Movie</a></li>
+        <li class="navbook"><a href="book.html">Book</a></li>
+        <li class="navreview"><a href="review.html">Review</a></li>
+    </ul>
+
+   
+</nav>
+
+        
+        <section>
+    
+			<article>
+
+				<h3>About the Person</h3>
+
+				<p>This is used to classify information about a specific person. This person can be alive or dead, even fictional. The tagging captures data points related directly to the person. Potential tags include address, related URL, job title and birth date.</p>
+			
+				
+			</article>	
+	
+	
+		    <form action="#">
+				<h3>Info about a Person</h3>
+	        	<fieldset>
+	        		
+	        		<p><label>Name</label><input type="text" name="name" id="name"></p>
+	        		<p><label>Organization</label><input type="text" name="organization" id="organization"></p>
+	        		<p><label>Job title</label><input type="text" name="jobtitle" id="jobtitle"></p>
+	        		<p><label>URL</label><input type="text" name="url" id="url"></p>
+	        		<p><label>Description</label><textarea name="description" id="description"></textarea></p>
+	        		<p><label>Birth date</label><input type="text" name="birthdate" class="datepicker" id="birthdate"></p>
+	        		<p><label>Address</label><input type="text" name="address" id="address"></p>
+	        		<p><label>PO Box</label><input type="text" name="pobox" id="pobox"></p>
+	        		<p><label>City</label><input type="text" name="city" id="city"></p>
+	        		<p><label>State/Region</label><input type="text" name="state" id="state"></p>
+	        		<p><label>Postal Code</label><input type="text" name="zip" id="zip"></p>
+	        		<p><label>Country</label><input type="text" name="country" id="country"></p>
+	        		<p><label>Email</label><input type="text" name="email" id="email"></p>
+	        		<p><label>Telephone</label><input type="text" name="telephone" id="telephone"></p>
+	        	</fieldset>
+        	</form>
+        	<div class="output">
+                    <h4>Preview</h4>
+                    <div id="htmloutput">
+                    </div>
+                    <h4>Code</h4>
+                    <textarea id="codeoutput"></textarea>
+                    <p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="raventools"></a><script type="text/javascript" src="../platform.twitter.com/widgets.js"></script> <!--<script src="http://www.stumbleupon.com/hostedbadge.php?s=1"></script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--><g:plusone size="medium"></g:plusone> <fb:like href="#" send="false" show_faces="false" font=""></fb:like></p>            </div>
+			
+			
+
+			
+			
+        </section>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "../connect.facebook.net/en_US/all.js#xfbml=1&appId=294198537281040";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Google Code for Remarketing tag -->
+      <!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+      <script type="text/javascript">
+      /* <![CDATA[ */
+      var google_conversion_id = 983050619;
+      var google_conversion_label = "V0fGCIXs6gQQ-9Lg1AM";
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+      </script>
+      <script type="text/javascript" src="../www.googleadservices.com/pagead/f.txt">
+      </script>
+      <noscript>
+      <div style="display:inline;">
+      <img height="1" width="1" style="border-style:none;" alt="" src="../googleads.g.doubleclick.net/pagead/viewthroughconversion/983050619/index2ca3.html?value=1.00&amp;currency_code=USD&amp;label=V0fGCIXs6gQQ-9Lg1AM&amp;guid=ON&amp;script=0"/>
+      </div>
+      </noscript>
+
+      <!-- Facebook Pixel Code -->
+      <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','../connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1138547392829617');
+      fbq('track', "PageView");</script>
+      <noscript><img height="1" width="1" style="display:none"
+      src="../www.facebook.com/tr707e.gif?id=1138547392829617&amp;ev=PageView&amp;noscript=1"
+      /></noscript>
+      <!-- End Facebook Pixel Code -->
+      <script type='text/javascript' src='../assets.glossary.cards/js/popup.js'></script>
+</body>
+
+<!-- Mirrored from schema-creator.org/person.php by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 28 Jan 2016 07:23:13 GMT -->
+</html>
